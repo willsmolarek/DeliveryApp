@@ -1,13 +1,14 @@
-import { sql } from '@vercel/postgres';
+import { neon } from '@neondatabase/serverless';
 import { NextResponse } from 'next/server';
 
-// PUT - Atualizar pedido
+const sql = neon(process.env.POSTGRES_URL);
+
 export async function PUT(request, { params }) {
   try {
     const { id } = params;
     const updates = await request.json();
     
-    const { rows } = await sql`
+    const result = await sql`
       UPDATE orders 
       SET 
         status = ${updates.status},
@@ -16,8 +17,16 @@ export async function PUT(request, { params }) {
       RETURNING *
     `;
     
-    return NextResponse.json(rows[0]);
+    if (result.length === 0) {
+      return NextResponse.json(
+        { error: 'Pedido não encontrado' },
+        { status: 404 }
+      );
+    }
+    
+    return NextResponse.json(result[0]);
   } catch (error) {
+    console.error('Erro ao atualizar pedido:', error);
     return NextResponse.json(
       { error: 'Erro ao atualizar pedido' },
       { status: 500 }
