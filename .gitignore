@@ -1,0 +1,15 @@
+﻿node_modules/
+.env.local
+.env
+.next/
+out/
+dist/
+*.log
+.DS_Store
+*.tgz
+*.tar.gz
+.cache/
+.vercel/
+.turbo/
+.next-swc/
+.next/cache/
