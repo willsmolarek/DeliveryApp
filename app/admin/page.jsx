@@ -9,7 +9,6 @@ export default function AdminPage() {
 
   const handleLogin = (e) => {
     e.preventDefault()
-    // Login simples para teste - remova depois
     if (email === 'admin@delivery.com' && password === 'admin123') {
       setIsAuthenticated(true)
     } else {
@@ -19,47 +18,127 @@ export default function AdminPage() {
 
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
-        <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md border border-gray-200">
-          <h1 className="text-3xl font-bold mb-6 text-center text-gray-900">Acesso Administrativo</h1>
-          <form onSubmit={handleLogin} className="space-y-6">
-            <div>
-              <label className="block text-lg font-semibold mb-2 text-gray-900">E-mail</label>
+      <div style={{
+        minHeight: '100vh',
+        backgroundColor: '#f9fafb',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '1rem'
+      }}>
+        <div style={{
+          backgroundColor: 'white',
+          padding: '2rem',
+          borderRadius: '12px',
+          boxShadow: '0 10px 25px rgba(0,0,0,0.1)',
+          width: '100%',
+          maxWidth: '400px',
+          border: '1px solid #e5e7eb'
+        }}>
+          <h1 style={{
+            fontSize: '1.875rem',
+            fontWeight: 'bold',
+            marginBottom: '1.5rem',
+            textAlign: 'center',
+            color: '#111827'
+          }}>
+            Acesso Administrativo
+          </h1>
+          
+          <form onSubmit={handleLogin} style={{ space: '1.5rem' }}>
+            <div style={{ marginBottom: '1.5rem' }}>
+              <label style={{
+                display: 'block',
+                fontSize: '1.125rem',
+                fontWeight: '600',
+                marginBottom: '0.5rem',
+                color: '#111827'
+              }}>
+                E-mail
+              </label>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full p-4 border-2 border-gray-300 rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all text-gray-900 bg-white"
+                style={{
+                  width: '100%',
+                  padding: '1rem',
+                  border: '2px solid #d1d5db',
+                  borderRadius: '12px',
+                  fontSize: '1rem',
+                  color: '#111827',
+                  backgroundColor: 'white'
+                }}
                 placeholder="admin@delivery.com"
                 required
               />
             </div>
-            <div>
-              <label className="block text-lg font-semibold mb-2 text-gray-900">Senha</label>
+            
+            <div style={{ marginBottom: '1.5rem' }}>
+              <label style={{
+                display: 'block',
+                fontSize: '1.125rem',
+                fontWeight: '600',
+                marginBottom: '0.5rem',
+                color: '#111827'
+              }}>
+                Senha
+              </label>
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full p-4 border-2 border-gray-300 rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all text-gray-900 bg-white"
+                style={{
+                  width: '100%',
+                  padding: '1rem',
+                  border: '2px solid #d1d5db',
+                  borderRadius: '12px',
+                  fontSize: '1rem',
+                  color: '#111827',
+                  backgroundColor: 'white'
+                }}
                 placeholder="admin123"
                 required
               />
             </div>
+            
             <button
               type="submit"
-              className="w-full bg-blue-600 text-white p-4 rounded-xl hover:bg-blue-700 font-semibold text-lg transition-colors shadow-md"
+              style={{
+                width: '100%',
+                backgroundColor: '#2563eb',
+                color: 'white',
+                padding: '1rem',
+                borderRadius: '12px',
+                fontWeight: '600',
+                fontSize: '1.125rem',
+                border: 'none',
+                cursor: 'pointer'
+              }}
             >
               Entrar no Sistema
             </button>
           </form>
-          <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
-            <p className="text-center text-blue-900 font-medium">
+          
+          <div style={{
+            marginTop: '1.5rem',
+            padding: '1rem',
+            backgroundColor: '#dbeafe',
+            borderRadius: '8px',
+            border: '1px solid #93c5fd'
+          }}>
+            <p style={{
+              textAlign: 'center',
+              color: '#1e40af',
+              fontWeight: '500',
+              marginBottom: '0.5rem'
+            }}>
               Credenciais para teste:
             </p>
-            <p className="text-center text-blue-800 mt-1">
+            <p style={{ textAlign: 'center', color: '#1e40af' }}>
               <strong>E-mail:</strong> admin@delivery.com
             </p>
-            <p className="text-center text-blue-800">
+            <p style={{ textAlign: 'center', color: '#1e40af' }}>
               <strong>Senha:</strong> admin123
             </p>
           </div>
